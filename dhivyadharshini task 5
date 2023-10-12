@@ -1,0 +1,42 @@
+1.User Interface (UI):
+    You can use libraries like Qt or GTK for building the graphical user interface. These libraries offer extensive widgets and design options.
+2.Image Loading and Display:
+     Use a library like OpenCV to load and display images.
+3.Image Filters:
+     Implement basic filters using OpenCV, such as grayscale, blur, brightness, contrast adjustment, and sharpening.
+4.Crop and Resize:
+     Allow users to select regions for cropping and provide options for resizing. OpenCV can handle these operations efficiently.
+5.Image Saving:
+    utilize OpenCV to save the processed image in various formats.
+6.User Interaction:
+    Implement event handlers to capture user actions like button clicks and mouse events.
+
+       program
+      
+       
+#include <opencv2/opencv.hpp>
+#include <opencv2/highgui/highgui.hpp>
+int main() {
+    // Load an image
+    cv::Mat originalImage = cv::imread("input.jpg", cv::IMREAD_COLOR);
+    
+    // Check if the image was loaded successfully
+    if (originalImage.empty()) {
+        std::cerr << "Error: Could not open or find the image!" << std::endl;
+        return -1;
+    }
+    
+    // Convert the image to grayscale
+    cv::Mat grayscaleImage;
+    cv::cvtColor(originalImage, grayscaleImage, cv::COLOR_BGR2GRAY);
+    
+    // Display the grayscale image
+    cv::imshow("Grayscale Image", grayscaleImage);
+    
+    // Save the grayscale image
+    cv::imwrite("output.jpg", grayscaleImage);
+    
+    cv::waitKey(0); // Wait for user input
+
+    return 0;
+}
